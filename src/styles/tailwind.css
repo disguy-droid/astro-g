@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .detail {
+    @apply translate-y-10 transform duration-300 ease-linear group-hover:translate-y-0;
+  }
+}

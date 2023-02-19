@@ -1,0 +1,102 @@
+---
+export interface Props {
+  title: string;
+  image: string;
+  slug: string;
+  description: string;
+}
+
+const { title, image, slug, description } = Astro.props;
+---
+
+<script>
+  import { animate, stagger } from "motion";
+
+  class Card extends HTMLElement {
+    constructor() {
+      super();
+      const card = this.querySelector(".card") as HTMLElement;
+      const image = this.querySelector("img") as HTMLElement;
+      const blueBG = this.querySelector(".blur-bg") as HTMLElement;
+      const details = Array.from(
+        this.querySelectorAll(".details")
+      ) as HTMLElement[];
+
+      card.addEventListener("mouseenter", () => {
+        animate(
+          image,
+          {
+            scale: 1.2,
+          },
+          { duration: 0.6 }
+        );
+        animate(
+          blueBG,
+          {
+            opacity: [0, 1],
+          },
+          { duration: 0.3 }
+        );
+        animate(
+          details,
+          {
+            transform: ["translateY(10px)", "translateY(0px)"],
+          },
+          { duration: 0.3 }
+        );
+      });
+
+      card.addEventListener("mouseleave", () => {
+        animate(
+          image,
+          {
+            scale: 1,
+          },
+          { duration: 0.8 }
+        );
+        animate(
+          blueBG,
+          {
+            opacity: [1, 0],
+          },
+          { duration: 0.4 }
+        );
+        animate(
+          details,
+          {
+            transform: ["translateY(0px)", "translateY(10px)"],
+          },
+          { duration: 0.4 }
+        );
+      });
+    }
+  }
+
+  customElements.define("section-card", Card);
+</script>
+
+<section-card data-message={slug}>
+  <div class="card relative aspect-square overflow-hidden rounded bg-red-400">
+    <img
+      src={image}
+      alt={title}
+      class="h-full w-full cursor-pointer"
+    />
+
+    <div
+      class="blur-bg absolute bottom-0 flex h-auto w-full flex-col justify-end bg-gradient-to-t from-gray-900/80 to-transparent p-4 opacity-0"
+    >
+      <h3 class="title details font-medium uppercase text-gray-50">
+        {title}
+      </h3>
+      <p class="desc details mt-2 text-sm text-gray-300 line-clamp-2">
+        {description}
+      </p>
+      <a
+        href="#"
+        class="more details mt-4 w-fit px-0.5 text-sm text-gray-300 decoration-indigo-600 underline-offset-1 transition hover:text-indigo-300 hover:underline"
+        >Read more</a
+      >
+    </div>
+  </div>
+</section-card>
