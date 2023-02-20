@@ -3,10 +3,11 @@ export interface Props {
   title: string;
   image: string;
   slug: string;
+  slugCategory: string;
   description: string;
 }
 
-const { title, image, slug, description } = Astro.props;
+const { title, image, slug, slugCategory, description } = Astro.props;
 ---
 
 <script>
@@ -72,15 +73,18 @@ const { title, image, slug, description } = Astro.props;
     }
   }
 
-  customElements.define("section-card", Card);
+  customElements.define("custom-card", Card);
 </script>
 
-<section-card data-message={slug}>
-  <div class="card relative aspect-square overflow-hidden rounded bg-red-400">
+<custom-card
+  data-message={slug}
+  class="card-container"
+>
+  <div class="card relative aspect-square overflow-hidden rounded">
     <img
       src={image}
       alt={title}
-      class="h-full w-full cursor-pointer"
+      class="h-full w-full cursor-pointer object-cover"
     />
 
     <div
@@ -93,10 +97,10 @@ const { title, image, slug, description } = Astro.props;
         {description}
       </p>
       <a
-        href="#"
+        href={`/${slugCategory.toLowerCase()}/${slug}`}
         class="more details mt-4 w-fit px-0.5 text-sm text-gray-300 decoration-indigo-600 underline-offset-1 transition hover:text-indigo-300 hover:underline"
         >Read more</a
       >
     </div>
   </div>
-</section-card>
+</custom-card>

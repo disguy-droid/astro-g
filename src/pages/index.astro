@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import type { Mountains, Planets } from "../interfaces/interfaces";
 import SectionTitle from "../components/SectionTitle.astro";
-import SectionCard from "../components/SectionCard.astro";
+import CustomCard from "../components/CustomCard.astro";
 
 let mountains = [] as Mountains[];
 let planets = [] as Planets[];
@@ -25,16 +25,17 @@ try {
 ---
 
 <Layout title="Home Page">
-  <main class="min-h-screen space-y-20">
+  <main class="min-h-screen space-y-14">
     <div>
       <SectionTitle sectionTitle="Mountains" />
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         {
           mountains.splice(0, 3).map(({ title, image, slug, description }) => (
-            <SectionCard
+            <CustomCard
               title={title}
               image={image}
               slug={slug}
+              slugCategory={"Mountains"}
               description={description}
             />
           ))
@@ -46,10 +47,11 @@ try {
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         {
           planets.splice(0, 3).map(({ title, image, slug, description }) => (
-            <SectionCard
+            <CustomCard
               title={title}
               image={image}
               slug={slug}
+              slugCategory={"Planets"}
               description={description}
             />
           ))

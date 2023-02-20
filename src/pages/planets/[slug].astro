@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+type Slug = {
+  slug: NonNullable<string>;
+};
+
+const { slug } = Astro.params as Slug;
+
+const capitalize = slug.charAt(0).toUpperCase() + slug;
+---
+
+<Layout title={capitalize}>
+  <h2>
+    {slug}
+  </h2>
+</Layout>
