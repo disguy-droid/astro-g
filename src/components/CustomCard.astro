@@ -90,15 +90,17 @@ const { title, image, slug, slugCategory, description } = Astro.props;
     <div
       class="blur-bg absolute bottom-0 flex h-auto w-full flex-col justify-end bg-gradient-to-t from-gray-900/80 to-transparent p-4 opacity-0"
     >
-      <h3 class="title details font-medium uppercase text-gray-50">
+      <h3
+        class="title details text-lg font-medium uppercase text-gray-50 md:text-xl"
+      >
         {title}
       </h3>
-      <p class="desc details mt-2 text-sm text-gray-300 line-clamp-2">
+      <p class="desc details mt-2 text-base text-gray-300 line-clamp-2">
         {description}
       </p>
       <a
         href={`/${slugCategory.toLowerCase()}/${slug}`}
-        class="more details mt-4 w-fit px-0.5 text-sm text-gray-300 decoration-indigo-600 underline-offset-1 transition hover:text-indigo-300 hover:underline"
+        class="more details mt-4 w-fit px-0.5 text-gray-300 decoration-indigo-600 underline-offset-1 transition hover:text-indigo-300 hover:underline"
         >Read more</a
       >
     </div>

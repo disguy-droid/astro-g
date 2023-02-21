@@ -30,22 +30,33 @@ const { title, image, description, height, continent, countries } = mountain;
 <Layout title={title}>
   <main class="min-h-screen">
     <a href="/">Back</a>
-    <img
-      src={image}
-      alt={`${title}`}
-      class="mt-8 aspect-video w-full rounded"
-    />
+    <div class="mx-auto aspect-square h-[550px]">
+      <img
+        src={image}
+        alt={`${title}`}
+        class="mt-8 h-full w-full rounded object-cover"
+      />
+    </div>
 
     <div class="mt-10">
-      <h2 class="text-2xl font-semibold md:text-3xl">{title}</h2>
-      <p class="mt-4 text-sm text-gray-700 md:text-base">{description}</p>
+      <h2 class="text-2xl font-semibold md:text-3xl">
+        {title}
+      </h2>
+      <p class="mt-4 text-base text-gray-700 md:text-lg">{description}</p>
     </div>
     <div class="mt-4 space-y-1">
-      <p class="text-gray-700">Height: {height}</p>
-      <p class="text-gray-700">
-        Countries: {countries.join(", ")}
-      </p>
-      <p class="text-gray-700">Continent: {continent}</p>
+      <div class="flex space-x-1">
+        <h6 class="font-medium text-gray-700">Height:</h6>
+        <p class="text-gray-700">{height}</p>
+      </div>
+      <div class="flex space-x-1">
+        <h6 class="font-medium text-gray-700">Countries:</h6>
+        <p class="text-gray-700">{countries.join(", ")}</p>
+      </div>
+      <div class="flex space-x-1">
+        <h6 class="font-medium text-gray-700">Continent:</h6>
+        <p class="text-gray-700">{continent}</p>
+      </div>
     </div>
   </main>
 </Layout>

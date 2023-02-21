@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        ibmPlexSans: "'IBM Plex Sans', sans-serif",
+        ibmPlexSerif: "'IBM Plex Serif', serif",
+        ibmPlexMono: "'IBM Plex Mono', monospace",
         libreCalsonText: "'Libre Caslon Text', serif",
         inter: "'Inter', sans-serif",
       },
